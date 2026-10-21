@@ -30,14 +30,14 @@ function getTaskStatusLabel(task: Task): string {
   return task.status === 'completed' ? 'Completada' : 'Pendiente';
 }
 
-// getToggleStatusLabel describe la accion que alterna el estado de la tarea.
+// getToggleStatusLabel describe la acción que alterna el estado de la tarea.
 function getToggleStatusLabel(task: Task): string {
   return task.status === 'completed'
     ? 'Marcar como pendiente'
     : 'Completar tarea';
 }
 
-// TaskItem muestra una tarea con su puntuacion ICE y sus acciones.
+// TaskItem muestra una tarea con su puntuación ICE y sus acciones.
 function TaskItem({ task, onDelete, onEdit, onToggleStatus }: TaskItemProps) {
   const isCompleted = task.status === 'completed';
 

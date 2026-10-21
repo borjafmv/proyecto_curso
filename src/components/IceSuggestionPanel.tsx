@@ -40,7 +40,7 @@ function IceSuggestionPanel({
       </Button>
       {!canRequest && (
         <Typography color="text.secondary" variant="caption">
-          Escribe un titulo o una descripcion para pedir la sugerencia.
+          Escribe un título o una descripción para pedir la sugerencia.
         </Typography>
       )}
       {error !== null && (

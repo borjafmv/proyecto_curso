@@ -3,14 +3,14 @@ import type { IceScore, IceScoreDraft } from '../types/IceScore';
 export const MIN_ICE_VALUE = 1;
 export const MAX_ICE_VALUE = 10;
 
-// isValidIceValue comprueba que un valor ICE sea entero y este dentro del rango permitido.
+// isValidIceValue comprueba que un valor ICE sea entero y esté dentro del rango permitido.
 export function isValidIceValue(value: number): boolean {
   return (
     Number.isInteger(value) && value >= MIN_ICE_VALUE && value <= MAX_ICE_VALUE
   );
 }
 
-// validateIceScore comprueba que impacto, confianza y esfuerzo sean valores ICE validos.
+// validateIceScore comprueba que impacto, confianza y esfuerzo sean valores ICE válidos.
 export function validateIceScore({
   impact,
   confidence,
@@ -19,7 +19,7 @@ export function validateIceScore({
   return [impact, confidence, effort].every(isValidIceValue);
 }
 
-// getValidIceScore devuelve los valores ICE completos y validos, o null si falta alguno.
+// getValidIceScore devuelve los valores ICE completos y válidos, o null si falta alguno.
 export function getValidIceScore({
   impact,
   confidence,

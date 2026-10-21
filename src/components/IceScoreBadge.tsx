@@ -5,12 +5,12 @@ interface IceScoreBadgeProps {
   muted?: boolean;
 }
 
-// formatIceScore muestra la puntuacion ICE con una precision estable, o un guion si aun no existe.
+// formatIceScore muestra la puntuación ICE con una precisión estable, o un guion si aún no existe.
 function formatIceScore(score: number | null): string {
   return score === null ? 'ICE —' : `ICE ${score.toFixed(1)}`;
 }
 
-// IceScoreBadge muestra la puntuacion ICE calculada.
+// IceScoreBadge muestra la puntuación ICE calculada.
 function IceScoreBadge({ score, muted = false }: IceScoreBadgeProps) {
   const isHighlighted = score !== null && !muted;
 

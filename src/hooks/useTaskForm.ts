@@ -26,7 +26,7 @@ const EMPTY_FORM_VALUES: TaskFormValues = {
   title: '',
 };
 
-// getInitialValues prepara el formulario vacio o con los datos de la tarea a editar.
+// getInitialValues prepara el formulario vacío o con los datos de la tarea a editar.
 function getInitialValues(task: Task | null): TaskFormValues {
   if (task === null) {
     return EMPTY_FORM_VALUES;
@@ -55,21 +55,21 @@ function taskFormReducer(
   }
 }
 
-// calculateDraftIce devuelve la puntuacion ICE o null si faltan valores validos.
+// calculateDraftIce devuelve la puntuación ICE o null si faltan valores válidos.
 function calculateDraftIce(values: TaskFormValues): number | null {
   const iceScore = getValidIceScore(values);
 
   return iceScore === null ? null : calculateIce(iceScore);
 }
 
-// buildTaskText une titulo y descripcion para pedir la sugerencia ICE a la IA.
+// buildTaskText une título y descripción para pedir la sugerencia ICE a la IA.
 function buildTaskText(values: TaskFormValues): string {
   return [values.title.trim(), values.description.trim()]
     .filter((text) => text !== '')
     .join('\n');
 }
 
-// buildTaskToSave devuelve la tarea lista para guardar, o null si el formulario no es valido.
+// buildTaskToSave devuelve la tarea lista para guardar, o null si el formulario no es válido.
 function buildTaskToSave(values: TaskFormValues): NewTask | null {
   const title = values.title.trim();
   const iceScore = getValidIceScore(values);
@@ -93,7 +93,7 @@ export function useTaskForm(taskToEdit: Task | null) {
   const taskText = buildTaskText(values);
   const taskToSave = buildTaskToSave(values);
 
-  // changeText actualiza el titulo o la descripcion.
+  // changeText actualiza el título o la descripción.
   function changeText(field: TaskTextField, value: string): void {
     dispatch({ type: 'changeText', field, value });
   }

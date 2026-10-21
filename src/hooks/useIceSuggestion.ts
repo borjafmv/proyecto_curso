@@ -12,7 +12,7 @@ export function useIceSuggestion() {
   const [error, setError] = useState<string | null>(null);
   const [suggestion, setSuggestion] = useState<IceScore | null>(null);
 
-  // requestSuggestion pide a la IA valores ICE y devuelve null si la peticion falla.
+  // requestSuggestion pide a la IA valores ICE y devuelve null si la petición falla.
   async function requestSuggestion(taskText: string): Promise<IceScore | null> {
     setLoading(true);
     setError(null);

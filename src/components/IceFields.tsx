@@ -15,7 +15,7 @@ const ICE_FIELDS: { field: IceField; label: string }[] = [
   { field: 'effort', label: 'Esfuerzo' },
 ];
 
-// getSliderValue devuelve un unico valor aunque el Slider admita rangos.
+// getSliderValue devuelve un único valor aunque el Slider admita rangos.
 function getSliderValue(value: number | number[]): number {
   return Array.isArray(value) ? value[0] : value;
 }
@@ -39,7 +39,7 @@ function IceFields({ values, onChange }: IceFieldsProps) {
                 {value ?? '—'}
               </Typography>
             </Stack>
-            {/* Sin valor, el Slider no emite onChange al pulsar el minimo; onChangeCommitted cubre ese caso. */}
+            {/* Sin valor, el Slider no emite onChange al pulsar el mínimo; onChangeCommitted cubre ese caso. */}
             <Slider
               aria-labelledby={labelId}
               getAriaValueText={(sliderValue) =>
