@@ -1,0 +1,32 @@
+# Rechaza los PR a main que no vengan de dev o de una rama hotfix/ de este repositorio
+name: Git flow
+
+on:
+  pull_request:
+    branches: [main]
+    # edited: vuelve a comprobarlo si se cambia la rama base del PR a main
+    types: [opened, edited, reopened, synchronize]
+
+permissions: {}
+
+jobs:
+  source-branch:
+    name: Rama de origen permitida
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar la rama de origen
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ "$HEAD_REPO" != "$REPO" ]; then
+            echo "::error::Los PR a main solo pueden venir de este repositorio, no de un fork ($HEAD_REPO)."
+            exit 1
+          fi
+          if [ "$HEAD_REF" = "dev" ] || [[ "$HEAD_REF" == hotfix/* ]]; then
+            echo "Rama de origen permitida: $HEAD_REF"
+          else
+            echo "::error::Los PR a main solo pueden venir de dev o de hotfix/*. Este viene de «$HEAD_REF»: cambia la rama base del PR a dev."
+            exit 1
+          fi

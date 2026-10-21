@@ -26,6 +26,7 @@ Aplicación web de una sola página para gestionar tareas y priorizarlas con el 
 - El PR de una issue va siempre contra `dev`, nunca contra `main`, y su descripción incluye `Closes #<número>` para que la issue se cierre al mergear.
 - Para mergear en `dev` todos los hilos de conversación del PR deben estar resueltos. GitHub no deja mergear un PR con conflictos: actualiza la rama con `dev` y resuélvelos.
 - Publicar una versión: PR de `dev` a `main`. Un arreglo urgente sale de `main` en `hotfix/<descripción-corta>`, se mergea por PR en `main` y después en `dev`.
+- `.github/workflows/git-flow.yml` es un check obligatorio en `main`: falla si el PR no viene de `dev` o de una rama `hotfix/` de este repositorio.
 
 ## Arquitectura
 
