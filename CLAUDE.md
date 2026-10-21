@@ -18,6 +18,15 @@ Aplicación web de una sola página para gestionar tareas y priorizarlas con el 
 - Corregir: `npm run lint:fix` y `npm run format`.
 - Compilar: `npm run build` (comprueba tipos y genera `dist/`).
 
+## Flujo con Git (git flow)
+
+- Repositorio: `borjafmv/proyecto_curso`. `main` guarda las versiones estables; `dev` es la rama de integración y la rama por defecto en GitHub.
+- `main` y `dev` están protegidas, también para administradores: no admiten push directo, force push ni borrado; solo cambian mediante PR.
+- Cada issue se trabaja en una rama `feature/<número>-<descripción-corta>` que sale de `dev` (por ejemplo, `feature/12-filtrar-tareas`).
+- El PR de una issue va siempre contra `dev`, nunca contra `main`, y su descripción incluye `Closes #<número>` para que la issue se cierre al mergear.
+- Para mergear en `dev` todos los hilos de conversación del PR deben estar resueltos. GitHub no deja mergear un PR con conflictos: actualiza la rama con `dev` y resuélvelos.
+- Publicar una versión: PR de `dev` a `main`. Un arreglo urgente sale de `main` en `hotfix/<descripción-corta>`, se mergea por PR en `main` y después en `dev`.
+
 ## Arquitectura
 
 ### Capas
