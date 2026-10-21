@@ -9,7 +9,7 @@ function createTaskId(): string {
   return `task-${crypto.randomUUID()}`;
 }
 
-// sortTasksByIce devuelve una nueva lista ordenada por puntuacion ICE descendente.
+// sortTasksByIce devuelve una nueva lista ordenada por puntuación ICE descendente.
 function sortTasksByIce(tasks: Task[]): Task[] {
   return [...tasks].sort(
     (firstTask, secondTask) =>
@@ -17,13 +17,13 @@ function sortTasksByIce(tasks: Task[]): Task[] {
   );
 }
 
-// useTaskManager centraliza la gestion local de tareas y expone datos derivados.
+// useTaskManager centraliza la gestión local de tareas y expone datos derivados.
 export function useTaskManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const sortedTasks = useMemo(() => sortTasksByIce(tasks), [tasks]);
 
-  // createTask anade una nueva tarea pendiente al estado local.
+  // createTask añade una nueva tarea pendiente al estado local.
   function createTask(task: NewTask): void {
     setTasks((currentTasks) => [
       ...currentTasks,

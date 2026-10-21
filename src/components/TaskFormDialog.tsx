@@ -28,7 +28,7 @@ interface TaskFormDialogProps {
   onSave: (task: NewTask) => void;
 }
 
-// TaskFormDialog permite crear una tarea o editar una existente con su puntuacion ICE.
+// TaskFormDialog permite crear una tarea o editar una existente con su puntuación ICE.
 function TaskFormDialog({ task, onClose, onSave }: TaskFormDialogProps) {
   const {
     applyIceScore,
@@ -50,7 +50,7 @@ function TaskFormDialog({ task, onClose, onSave }: TaskFormDialogProps) {
     }
   }
 
-  // handleSubmit guarda la tarea solo si el formulario es valido.
+  // handleSubmit guarda la tarea solo si el formulario es válido.
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
 
@@ -77,14 +77,14 @@ function TaskFormDialog({ task, onClose, onSave }: TaskFormDialogProps) {
             <TextField
               autoFocus
               fullWidth
-              label="Titulo"
+              label="Título"
               onChange={(event) => changeText('title', event.target.value)}
               required
               value={values.title}
             />
             <TextField
               fullWidth
-              label="Descripcion"
+              label="Descripción"
               minRows={3}
               multiline
               onChange={(event) =>
@@ -93,7 +93,7 @@ function TaskFormDialog({ task, onClose, onSave }: TaskFormDialogProps) {
               value={values.description}
             />
             <Typography color="text.secondary" variant="overline">
-              Puntuacion ICE
+              Puntuación ICE
             </Typography>
             <IceSuggestionPanel
               canRequest={taskText !== ''}

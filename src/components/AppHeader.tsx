@@ -9,7 +9,7 @@ function formatTaskCount(taskCount: number): string {
   return taskCount === 1 ? '1 tarea' : `${taskCount} tareas`;
 }
 
-// AppHeader muestra el titulo de la aplicacion y el numero de tareas.
+// AppHeader muestra el título de la aplicación y el número de tareas.
 function AppHeader({ taskCount }: AppHeaderProps) {
   return (
     <AppBar position="static" color="primary" elevation={1}>

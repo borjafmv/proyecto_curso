@@ -17,7 +17,7 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [taskBeingEdited, setTaskBeingEdited] = useState<Task | null>(null);
 
-  // openCreateForm abre el formulario vacio para una nueva tarea.
+  // openCreateForm abre el formulario vacío para una nueva tarea.
   function openCreateForm(): void {
     setTaskBeingEdited(null);
     setIsFormOpen(true);
@@ -34,7 +34,7 @@ function App() {
     setIsFormOpen(false);
   }
 
-  // handleSaveTask crea una tarea nueva o actualiza la que se esta editando.
+  // handleSaveTask crea una tarea nueva o actualiza la que se está editando.
   function handleSaveTask(task: NewTask): void {
     if (taskBeingEdited === null) {
       createTask(task);

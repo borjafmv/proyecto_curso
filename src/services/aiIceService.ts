@@ -8,16 +8,16 @@ const REQUEST_TIMEOUT_MS = 15000;
 
 const ERROR_MESSAGES = {
   invalidKey:
-    'El servicio de IA rechazo la peticion. Revisa que la clave de Gemini sea valida.',
-  invalidResponse: 'La IA devolvio una respuesta con un formato inesperado.',
+    'El servicio de IA rechazó la petición. Revisa que la clave de Gemini sea válida.',
+  invalidResponse: 'La IA devolvió una respuesta con un formato inesperado.',
   missingKey:
     'Falta la clave de la API de Gemini. Configura VITE_GEMINI_API_KEY en el archivo .env.',
   network:
-    'No se pudo conectar con el servicio de IA. Revisa tu conexion e intentalo de nuevo.',
+    'No se pudo conectar con el servicio de IA. Revisa tu conexión e inténtalo de nuevo.',
   quotaExceeded:
-    'Se ha superado el limite gratuito de la API de IA. Espera un momento y vuelve a intentarlo.',
+    'Se ha superado el límite gratuito de la API de IA. Espera un momento y vuelve a intentarlo.',
   unavailable:
-    'El servicio de IA no esta disponible ahora mismo. Intentalo mas tarde.',
+    'El servicio de IA no está disponible ahora mismo. Inténtalo más tarde.',
 };
 
 interface GeminiResponse {
@@ -32,7 +32,7 @@ export class AiIceServiceError extends Error {
   }
 }
 
-// buildIcePrompt construye el prompt recomendado en la documentacion del MVP.
+// buildIcePrompt construye el prompt recomendado en la documentación del MVP.
 function buildIcePrompt(taskText: string): string {
   return `Analiza la siguiente tarea y estima sus valores ICE.
 
@@ -72,7 +72,7 @@ function buildRequestBody(taskText: string) {
   };
 }
 
-// getHttpErrorMessage traduce el codigo HTTP de Gemini a un mensaje legible.
+// getHttpErrorMessage traduce el código HTTP de Gemini a un mensaje legible.
 function getHttpErrorMessage(status: number): string {
   if (status === 429) {
     return ERROR_MESSAGES.quotaExceeded;
@@ -85,7 +85,7 @@ function getHttpErrorMessage(status: number): string {
   return ERROR_MESSAGES.unavailable;
 }
 
-// isIceValue comprueba que un valor externo sea un entero ICE valido.
+// isIceValue comprueba que un valor externo sea un entero ICE válido.
 function isIceValue(value: unknown): value is number {
   return typeof value === 'number' && isValidIceValue(value);
 }
@@ -127,7 +127,7 @@ async function readIceScore(response: Response): Promise<IceScore> {
   }
 }
 
-// getIceSuggestion pide a Gemini una estimacion ICE para la tarea indicada.
+// getIceSuggestion pide a Gemini una estimación ICE para la tarea indicada.
 export async function getIceSuggestion(taskText: string): Promise<IceScore> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
