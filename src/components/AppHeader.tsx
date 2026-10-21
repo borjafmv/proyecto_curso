@@ -1,4 +1,4 @@
-import { AppBar, Chip, Toolbar, Typography } from '@mui/material';
+import { AppBar, Chip, Toolbar, Typography, alpha } from '@mui/material';
 
 interface AppHeaderProps {
   taskCount: number;
@@ -21,7 +21,10 @@ function AppHeader({ taskCount }: AppHeaderProps) {
           <Chip
             label={formatTaskCount(taskCount)}
             size="small"
-            sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)', color: 'inherit' }}
+            sx={{
+              bgcolor: (theme) => alpha(theme.palette.common.white, 0.2),
+              color: 'inherit',
+            }}
           />
         )}
       </Toolbar>

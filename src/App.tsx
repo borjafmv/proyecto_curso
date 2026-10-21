@@ -17,20 +17,20 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [taskBeingEdited, setTaskBeingEdited] = useState<Task | null>(null);
 
-  // openCreateForm abre el formulario vacío para una nueva tarea.
-  function openCreateForm(): void {
+  // handleOpenCreateForm abre el formulario vacío para una nueva tarea.
+  function handleOpenCreateForm(): void {
     setTaskBeingEdited(null);
     setIsFormOpen(true);
   }
 
-  // openEditForm abre el formulario con los datos de la tarea elegida.
-  function openEditForm(task: Task): void {
+  // handleOpenEditForm abre el formulario con los datos de la tarea elegida.
+  function handleOpenEditForm(task: Task): void {
     setTaskBeingEdited(task);
     setIsFormOpen(true);
   }
 
-  // closeForm cierra el formulario sin guardar cambios.
-  function closeForm(): void {
+  // handleCloseForm cierra el formulario sin guardar cambios.
+  function handleCloseForm(): void {
     setIsFormOpen(false);
   }
 
@@ -42,7 +42,7 @@ function App() {
       updateTask(taskBeingEdited.id, task);
     }
 
-    closeForm();
+    handleCloseForm();
   }
 
   return (
@@ -51,11 +51,11 @@ function App() {
 
       <Container component="main" maxWidth="sm" sx={{ pb: 12, pt: 4 }}>
         {sortedTasks.length === 0 ? (
-          <EmptyState onCreateTask={openCreateForm} />
+          <EmptyState onCreateTask={handleOpenCreateForm} />
         ) : (
           <TaskList
             onDeleteTask={deleteTask}
-            onEditTask={openEditForm}
+            onEditTask={handleOpenEditForm}
             onToggleTaskStatus={toggleTaskStatus}
             tasks={sortedTasks}
           />
@@ -65,7 +65,7 @@ function App() {
       <Fab
         aria-label="Crear tarea"
         color="primary"
-        onClick={openCreateForm}
+        onClick={handleOpenCreateForm}
         sx={{ bottom: 24, position: 'fixed', right: 24 }}
       >
         <AddIcon />
@@ -73,7 +73,7 @@ function App() {
 
       {isFormOpen && (
         <TaskFormDialog
-          onClose={closeForm}
+          onClose={handleCloseForm}
           onSave={handleSaveTask}
           task={taskBeingEdited}
         />

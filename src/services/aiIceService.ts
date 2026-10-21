@@ -1,6 +1,6 @@
 import { isValidIceValue } from '../utils/validateIceScore';
 
-import type { IceScore } from '../types/IceScore';
+import type { IceField, IceScore } from '../types/IceScore';
 
 const GEMINI_MODEL = 'gemini-3.5-flash-lite';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
@@ -19,6 +19,18 @@ const ERROR_MESSAGES = {
   unavailable:
     'El servicio de IA no está disponible ahora mismo. Inténtalo más tarde.',
 };
+
+interface GeminiRequestBody {
+  contents: { role: 'user'; parts: { text: string }[] }[];
+  generationConfig: {
+    responseMimeType: 'application/json';
+    responseSchema: {
+      type: 'OBJECT';
+      properties: Record<IceField, { type: 'INTEGER' }>;
+      required: IceField[];
+    };
+  };
+}
 
 interface GeminiResponse {
   candidates?: { content?: { parts?: { text?: string }[] } }[];
@@ -54,7 +66,7 @@ Reglas:
 }
 
 // buildRequestBody pide a Gemini una respuesta JSON con tres enteros obligatorios.
-function buildRequestBody(taskText: string) {
+function buildRequestBody(taskText: string): GeminiRequestBody {
   return {
     contents: [{ role: 'user', parts: [{ text: buildIcePrompt(taskText) }] }],
     generationConfig: {
